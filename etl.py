@@ -61,5 +61,5 @@ ReceiptItemList_df.rename(columns={'_id.$oid': 'receipt_id'}, inplace=True)
 #keeping columns I need
 ReceiptItemList_df = ReceiptItemList_df[['receipt_id','barcode','description','finalPrice','itemPrice','brandCode']]
 
-ReceiptItemList_df.to_csv(r'D:\Assesment\fetch-rewards-task\data\CleanFiles\receiptsItemList.csv',index=False)
+ReceiptItemList_df.to_csv(r'D:\Assesment\fetch-rewards-task\data\CleanFiles\receiptsItemList.csv')
 

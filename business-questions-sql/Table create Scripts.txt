@@ -1,0 +1,87 @@
+-- Table: public.receipt_item
+
+CREATE TABLE public.receipt_item
+(
+    id numeric NOT NULL,
+    receipt_id character varying COLLATE pg_catalog."default",
+    barcode character varying COLLATE pg_catalog."default",
+    description character varying COLLATE pg_catalog."default",
+    final_price numeric,
+    item_price numeric,
+    brand_code character varying COLLATE pg_catalog."default",
+    CONSTRAINT receipt_item_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.receipt_item
+    OWNER to postgres;
+
+## Table for Brands
+
+-- Table: public.brands
+
+CREATE TABLE public.brands
+(
+    barcode character varying COLLATE pg_catalog."default" NOT NULL,
+    brand_id character varying COLLATE pg_catalog."default" NOT NULL,
+    category character varying COLLATE pg_catalog."default",
+    "categoryCode" character varying COLLATE pg_catalog."default",
+    "cpgOid" character varying COLLATE pg_catalog."default",
+    name character varying COLLATE pg_catalog."default",
+    "topBrand" boolean,
+    "brandCode" character varying COLLATE pg_catalog."default",
+    CONSTRAINT brands_pkey PRIMARY KEY (brand_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.brands
+    OWNER to postgres;
+
+## Table for Receipts
+
+-- Table: public.receipts
+
+CREATE TABLE public.receipts
+(
+    bonuspointsearned numeric,
+    bonuspointsearnedreason character varying COLLATE pg_catalog."default",
+    points_earned numeric,
+    purchased_item_count numeric,
+    rewards_receipt_status character varying COLLATE pg_catalog."default",
+    total_spent numeric,
+    user_id character varying COLLATE pg_catalog."default",
+    receipt_id character varying COLLATE pg_catalog."default" NOT NULL,
+    create_date timestamp without time zone,
+    points_award_date timestamp without time zone,
+    CONSTRAINT receipts_pkey PRIMARY KEY (receipt_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.receipts
+    OWNER to postgres;
+
+## Table for Users
+
+-- Table: public.users
+
+-- DROP TABLE public.users;
+
+CREATE TABLE public.users
+(
+    active boolean,
+    role character varying COLLATE pg_catalog."default",
+    "signUpSource" character varying COLLATE pg_catalog."default",
+    state character varying COLLATE pg_catalog."default",
+    user_id character varying COLLATE pg_catalog."default" NOT NULL,
+    created_date timestamp without time zone,
+    last_login timestamp without time zone,
+    CONSTRAINT users_pkey PRIMARY KEY (user_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.users
+    OWNER to postgres;
